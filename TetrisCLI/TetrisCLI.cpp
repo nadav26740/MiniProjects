@@ -12,11 +12,15 @@
 #define UP_ARROW 72
 #define RIGHT_ARROW 77
 
+#define START_TIME_PER_FRAME 600
+#define PRIME_DIFFICULTY_DEFINER 5000
+
 Board game_Board;
 std::mutex Render_locker;
 
 void main_update(DEFAULT_TIME_TYPE_TICKER delta_time);
 void Render_Screen();
+Ticker main_ticker(std::chrono::milliseconds(START_TIME_PER_FRAME));
 
 
 int main()
@@ -31,7 +35,6 @@ int main()
         }
     }
     
-    Ticker main_ticker(std::chrono::milliseconds(400));
     main_ticker.AddFunction(&main_update);
     main_ticker.Start();
     
@@ -87,6 +90,10 @@ void Render_Screen()
     system("cls");
     RenderSystem::Render_By_Metrix((uint8_t*)game_Board.GetBoard());
     std::cout << "Score: " << game_Board.Get_score() << std::endl;
+
+    // difficulty change by score
+    main_ticker.SetInterval(std::chrono::milliseconds(START_TIME_PER_FRAME - ((600) / (1 + ((PRIME_DIFFICULTY_DEFINER) / (int)(sqrt(game_Board.Get_score() + 1) * 20))))));
+    std::cout << "time per frame: " << main_ticker.GetInterval().count() << std::endl;
     Render_locker.unlock();
 }
 
