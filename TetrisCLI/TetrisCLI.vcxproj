@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="TetrisCLI.cpp" />
     <ClCompile Include="ticker.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Board.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="ticker.hpp" />
   </ItemGroup>

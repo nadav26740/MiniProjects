@@ -2,10 +2,20 @@
 //
 
 #include <iostream>
+#include "RenderSystem.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    uint8_t matrix[BOARD_MAX_HEIGHT][BOARD_MAX_WIDTH];
+    for (int i = 0; i < BOARD_MAX_HEIGHT; i++)
+    {
+        for (int j = 0; j < BOARD_MAX_WIDTH; j++)
+        {
+            matrix[i][j] = RenderSystem::PLACES_DEFINER::EMPTY;
+        }
+    }
+    
+    RenderSystem::Render_By_Metrix(matrix);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
