@@ -2,10 +2,12 @@
 //
 
 #include <iostream>
+#include <conio.h>
 #include "RenderSystem.h"
 
 int main()
 {
+    char keyboard_input_buffer;
     uint8_t matrix[BOARD_MAX_HEIGHT][BOARD_MAX_WIDTH];
     for (int i = 0; i < BOARD_MAX_HEIGHT; i++)
     {
@@ -16,6 +18,16 @@ int main()
     }
     
     RenderSystem::Render_By_Metrix(matrix);
+    
+    // getting keyboard input
+    while (true)
+    {
+        keyboard_input_buffer = _getch();
+        if (keyboard_input_buffer <= 0)
+            keyboard_input_buffer = _getch();
+
+        std::cout << (int)keyboard_input_buffer << std::endl;
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
