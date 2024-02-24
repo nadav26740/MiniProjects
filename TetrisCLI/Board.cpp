@@ -9,6 +9,9 @@ bool Board::Next_Move_legal(uint8_t new_cords[2])
         if (tetrashape[i].first + new_cords[0] >= BOARD_MAX_HEIGHT || tetrashape[i].first + new_cords[0] < 0
             || tetrashape[i].second + new_cords[1] >= BOARD_MAX_WIDTH || tetrashape[i].second + new_cords[1] < 0)
             return false;
+        if (this->m_matrix[tetrashape[i].first + new_cords[0]][tetrashape[i].second + new_cords[1]] 
+            == RenderSystem::PLACES_DEFINER::CATCHED_PLACE)
+            return false;
     }
     return true;
 }
