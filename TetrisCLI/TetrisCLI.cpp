@@ -1,5 +1,4 @@
 // TetrisCLI.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include <conio.h>
@@ -32,7 +31,7 @@ int main()
         }
     }
     
-    Ticker main_ticker(std::chrono::milliseconds(800));
+    Ticker main_ticker(std::chrono::milliseconds(400));
     main_ticker.AddFunction(&main_update);
     main_ticker.Start();
     
@@ -87,6 +86,7 @@ void Render_Screen()
     Render_locker.lock();
     system("cls");
     RenderSystem::Render_By_Metrix((uint8_t*)game_Board.GetBoard());
+    std::cout << "Score: " << game_Board.Get_score() << std::endl;
     Render_locker.unlock();
 }
 

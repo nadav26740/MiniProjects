@@ -31,6 +31,10 @@ private:
 	/// </summary>
 	void Create_new_Block();
 
+	void CheckForComplatedLines();
+
+	uint32_t Score = 0;
+
 public:
 	/// Main game engine 
 	void update();
@@ -40,6 +44,7 @@ public:
 	/// </summary>
 	/// <returns>matrix ready to get rendered</returns>
 	char* GetBoard();
+	uint32_t Get_score();
 	Board();
 	
 	// Controls

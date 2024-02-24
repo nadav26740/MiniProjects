@@ -38,6 +38,48 @@ void Board::Create_new_Block()
     current_cords[0] = 0;
 }
 
+void Board::CheckForComplatedLines()
+{
+    int Complated_Lines_in_row = 0;
+    int j = 0;
+    for (int i = 0; i < BOARD_MAX_HEIGHT; i++)
+    {
+        // checking if part of the line empty
+        for (j = 0; j < BOARD_MAX_WIDTH; j++)
+        {
+            if (this->m_matrix[i][j] == RenderSystem::PLACES_DEFINER::EMPTY)
+                break;
+        }
+
+        // if complated line has found
+        if (j == BOARD_MAX_WIDTH)
+        {
+            // TODO: optimize
+
+            // remvoing the line
+            for (j = 0; j < BOARD_MAX_WIDTH; j++)
+            {
+                this->m_matrix[i][j] = RenderSystem::PLACES_DEFINER::EMPTY;
+            }
+
+            // getting all the lines above one down
+            for (j = 0; j < BOARD_MAX_WIDTH; j++)
+            {
+                for (int x = i; x > 0; x--)
+                {
+                    this->m_matrix[x][j] = this->m_matrix[x - 1][j];
+                }
+            }
+
+            // checking the new line
+            Complated_Lines_in_row *= 1.25;
+            Complated_Lines_in_row += 100;
+            i--;
+        }
+    }
+    this->Score += Complated_Lines_in_row;
+}
+
 void Board::update()
 {
     uint8_t new_cords[2];
@@ -57,6 +99,7 @@ void Board::update()
             this->m_matrix[tetrashape[i].first + current_cords[0]][tetrashape[i].second + current_cords[1]] = RenderSystem::PLACES_DEFINER::CATCHED_PLACE;
         }
         Create_new_Block();
+        CheckForComplatedLines();
     }
 }
 
@@ -72,6 +115,11 @@ char* Board::GetBoard()
         rendered_matrix[tetrashape[i].first + current_cords[0]][tetrashape[i].second + current_cords[1]] = RenderSystem::PLACES_DEFINER::CATCHED_PLACE;
     }
     return (char*)rendered_matrix;
+}
+
+uint32_t Board::Get_score()
+{
+    return this->Score;
 }
 
 Board::Board()

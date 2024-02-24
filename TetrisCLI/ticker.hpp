@@ -34,9 +34,6 @@ protected:
     virtual void Clock();
 
 private:
-    
-    
-    
     /// @brief Clock is the main thread here it will run on the queue of items
     std::unique_ptr<std::thread> m_clock;
 
@@ -64,7 +61,7 @@ public:
     /// @brief Will start the ticker thread
     virtual void Start();
 
-    /// @brief Will make the ticker to stop immidetily buy crashing the thread (Not recommanded!)
+    /// @brief Will make the ticker to stop immidetily by crashing the thread (Not recommanded!)
     virtual void ForceStop();
 
     // ===================================
