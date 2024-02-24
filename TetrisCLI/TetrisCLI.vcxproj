@@ -134,6 +134,7 @@
     <ClCompile Include="TetraBlock.cpp" />
     <ClCompile Include="TetraL.cpp" />
     <ClCompile Include="TetraLine.cpp" />
+    <ClCompile Include="TetraT.cpp" />
     <ClCompile Include="TetrisCLI.cpp" />
     <ClCompile Include="ticker.cpp" />
   </ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="TetraBlock.h" />
     <ClInclude Include="TetraL.h" />
     <ClInclude Include="TetraLine.h" />
+    <ClInclude Include="TetraT.h" />
     <ClInclude Include="ticker.hpp" />
   </ItemGroup>
   <ItemGroup>

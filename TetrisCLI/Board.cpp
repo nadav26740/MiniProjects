@@ -33,8 +33,12 @@ bool Board::Next_Move_legal(std::vector<std::pair<uint8_t, uint8_t>> new_shape)
 
 void Board::Create_new_Block()
 {
-    switch (std::rand() % 3)
+    switch (std::rand() % 4)
     {
+    case 3:
+        this->m_current_block_handler = std::make_unique<TetraT>();
+        break;
+
     case 2:
         this->m_current_block_handler = std::make_unique<TetraL>();
         break;

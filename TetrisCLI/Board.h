@@ -5,6 +5,7 @@
 #include "TetraLine.h"
 #include "TetraBlock.h"
 #include "TetraL.h"
+#include "TetraT.h"
 
 class Board
 {

@@ -39,6 +39,9 @@
     <ClCompile Include="TetraL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TetraT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderSystem.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TetraL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TetraT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
