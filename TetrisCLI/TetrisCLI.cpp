@@ -13,7 +13,7 @@
 #define RIGHT_ARROW 77
 
 #define START_TIME_PER_FRAME 600
-#define PRIME_DIFFICULTY_DEFINER 5000
+#define PRIME_DIFFICULTY_DEFINER 1000
 
 Board game_Board;
 std::mutex Render_locker;

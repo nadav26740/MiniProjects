@@ -33,7 +33,21 @@ bool Board::Next_Move_legal(std::vector<std::pair<uint8_t, uint8_t>> new_shape)
 
 void Board::Create_new_Block()
 {
-    this->m_current_block_handler = std::make_unique<TetraLine>();
+    switch (std::rand() % 3)
+    {
+    case 2:
+        this->m_current_block_handler = std::make_unique<TetraL>();
+        break;
+
+    case 1:
+        this->m_current_block_handler = std::make_unique<TetraLine>();
+        break;
+
+    case 0:
+        this->m_current_block_handler = std::make_unique<TetraBlock>();
+        break;
+
+    }
     current_cords[1] = BOARD_MAX_WIDTH / 2;
     current_cords[0] = 0;
 }
@@ -124,6 +138,7 @@ uint32_t Board::Get_score()
 
 Board::Board()
 {
+    std::srand(std::time(nullptr));
     Create_new_Block();
     for (int i = 0; i < BOARD_MAX_HEIGHT; i++)
     {

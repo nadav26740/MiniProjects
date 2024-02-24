@@ -30,6 +30,15 @@
     <ClCompile Include="TetraLine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TetraBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tetra.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TetraL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderSystem.h">
@@ -47,5 +56,14 @@
     <ClInclude Include="TetraLine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TetraBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TetraL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

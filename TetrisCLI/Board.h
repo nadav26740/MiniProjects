@@ -3,6 +3,8 @@
 #include "RenderSystem.h"
 #include "Tetra.h"
 #include "TetraLine.h"
+#include "TetraBlock.h"
+#include "TetraL.h"
 
 class Board
 {
