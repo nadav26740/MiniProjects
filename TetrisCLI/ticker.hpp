@@ -73,7 +73,7 @@ public:
 
     /// @brief Adding new function to the function queue
     /// @param func Function pointer to the new function
-    /// @attention function need to be in this standart: void <function name>(time_t deltatime)
+    /// @attention function need to be in this standart: void <function name>(DEFAULT_TIME_TYPE_TICKER deltatime)
     ///  Where "deltatime" is the time gap from last running
     void AddFunction(void (*t_func)(DEFAULT_TIME_TYPE_TICKER));
     

@@ -3,11 +3,26 @@
 
 #include <iostream>
 #include <conio.h>
+#include <mutex>
 #include "RenderSystem.h"
+#include "Board.h"
+#include "ticker.hpp"
+
+#define ESCAPE_BUTTON 27
+#define LFET_ARROW 75
+#define UP_ARROW 72
+#define RIGHT_ARROW 77
+
+Board game_Board;
+std::mutex Render_locker;
+
+void main_update(DEFAULT_TIME_TYPE_TICKER delta_time);
+void Render_Screen();
+
 
 int main()
 {
-    char keyboard_input_buffer;
+    char keyboard_input_buffer = NULL;
     uint8_t matrix[BOARD_MAX_HEIGHT][BOARD_MAX_WIDTH];
     for (int i = 0; i < BOARD_MAX_HEIGHT; i++)
     {
@@ -17,17 +32,58 @@ int main()
         }
     }
     
-    RenderSystem::Render_By_Metrix(matrix);
+    Ticker main_ticker(std::chrono::milliseconds(800));
+    main_ticker.AddFunction(&main_update);
+    main_ticker.Start();
     
     // getting keyboard input
-    while (true)
+    while (keyboard_input_buffer != ESCAPE_BUTTON)
     {
         keyboard_input_buffer = _getch();
         if (keyboard_input_buffer <= 0)
             keyboard_input_buffer = _getch();
 
-        std::cout << (int)keyboard_input_buffer << std::endl;
+        //std::cout << (int)keyboard_input_buffer << std::endl;
+        switch (keyboard_input_buffer)
+        {
+        case (LFET_ARROW):
+            game_Board.Move_Left();
+            break;
+
+        case (RIGHT_ARROW):
+            game_Board.Move_Right();
+            break;
+
+        default:
+            break;
+        }
+        Render_Screen();
     }
+}
+
+void main_update(DEFAULT_TIME_TYPE_TICKER delta_time)
+{
+    try
+    {
+        game_Board.update();
+        Render_Screen();
+    }
+    catch (std::exception &e)
+    {
+        std::cerr << "Main Update Failure: " << e.what() << std::endl;
+    }
+    catch (...)
+    {
+        std::cerr << "Failure in main update" << std::endl;
+    }
+}
+
+void Render_Screen()
+{
+    Render_locker.lock();
+    system("cls");
+    RenderSystem::Render_By_Metrix((uint8_t*)game_Board.GetBoard());
+    Render_locker.unlock();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -130,6 +130,7 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="Tetra.cpp" />
+    <ClCompile Include="TetraLine.cpp" />
     <ClCompile Include="TetrisCLI.cpp" />
     <ClCompile Include="ticker.cpp" />
   </ItemGroup>
@@ -137,6 +138,7 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Tetra.h" />
+    <ClInclude Include="TetraLine.h" />
     <ClInclude Include="ticker.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -22,6 +22,6 @@ namespace RenderSystem
 		CATCHED_PLACE 
 	};
 
-	void Render_By_Metrix(uint8_t metrix[BOARD_MAX_HEIGHT][BOARD_MAX_WIDTH]);
+	void Render_By_Metrix(uint8_t *metrix);
 };
 
