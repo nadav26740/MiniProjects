@@ -22,6 +22,10 @@ namespace RenderSystem
 		CATCHED_PLACE 
 	};
 
+	/// <summary>
+	/// Getting matrix and rendering the board by it
+	/// </summary>
+	/// <param name="metrix">Getting board repressented by defines PLACES_DEFINER</param>
 	void Render_By_Metrix(uint8_t *metrix);
 };
 
