@@ -16,6 +16,21 @@ bool Board::Next_Move_legal(uint8_t new_cords[2])
     return true;
 }
 
+bool Board::Next_Move_legal(std::vector<std::pair<uint8_t, uint8_t>> new_shape)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        if (new_shape[i].first + this->current_cords[0] >= BOARD_MAX_HEIGHT || new_shape[i].first + this->current_cords[0] < 0
+            || new_shape[i].second + this->current_cords[1] >= BOARD_MAX_WIDTH || new_shape[i].second + this->current_cords[1] < 0)
+            return false;
+        if (this->m_matrix[new_shape[i].first + this->current_cords[0]][new_shape[i].second + this->current_cords[1]]
+            == RenderSystem::PLACES_DEFINER::CATCHED_PLACE)
+            return false;
+    }
+
+    return true;
+}
+
 void Board::Create_new_Block()
 {
     this->m_current_block_handler = std::make_unique<TetraLine>();
@@ -88,4 +103,12 @@ void Board::Move_Right()
     new_cords[1] = current_cords[1] + 1;
     if (Next_Move_legal(new_cords))
     current_cords[1] += 1;
+}
+
+void Board::Rotate()
+{
+    if (Next_Move_legal(m_current_block_handler->Get_Next_Rotate()))
+    {
+        m_current_block_handler->rotate();
+    }
 }

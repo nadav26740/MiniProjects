@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
-    <ClCompile Include="Tetra.cpp" />
     <ClCompile Include="TetraLine.cpp" />
     <ClCompile Include="TetrisCLI.cpp" />
     <ClCompile Include="ticker.cpp" />

@@ -13,6 +13,7 @@ private:
 	uint8_t current_cords[2];
 
 	bool Next_Move_legal(uint8_t new_cords[2]);
+	bool Next_Move_legal(std::vector<std::pair<uint8_t, uint8_t>> new_shape);
 	void Create_new_Block();
 
 public:
@@ -24,6 +25,7 @@ public:
 	// Controls
 	void Move_Left();
 	void Move_Right();
+	void Rotate();
 
 };
 

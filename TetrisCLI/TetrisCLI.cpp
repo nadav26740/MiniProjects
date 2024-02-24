@@ -54,8 +54,12 @@ int main()
             game_Board.Move_Right();
             break;
 
-        default:
+        case(UP_ARROW):
+            game_Board.Rotate();
             break;
+        
+        default:
+            continue;
         }
         Render_Screen();
     }
