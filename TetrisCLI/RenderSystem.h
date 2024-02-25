@@ -19,13 +19,16 @@ namespace RenderSystem
 	enum PLACES_DEFINER
 	{
 		EMPTY,
-		CATCHED_PLACE 
+		CATCHED_PLACE
 	};
 
 	/// <summary>
 	/// Getting matrix and rendering the board by it
 	/// </summary>
 	/// <param name="metrix">Getting board repressented by defines PLACES_DEFINER</param>
-	void Render_By_Metrix(uint8_t *metrix);
+	void Render_By_Metrix(uint8_t* metrix);
+
+	std::string Matrix_To_String(uint8_t* matrix);
+	void Render_System2(uint8_t* matrix, int Score);
 };
 

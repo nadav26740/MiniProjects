@@ -58,6 +58,8 @@ public:
     /// @brief will make the current ticker rotation his last
     virtual void Stop();
 
+    virtual void async_stop();
+
     /// @brief Will start the ticker thread
     virtual void Start();
 

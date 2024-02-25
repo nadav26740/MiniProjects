@@ -179,3 +179,13 @@ void Board::Rotate()
         m_current_block_handler->rotate();
     }
 }
+
+bool Board::Check_If_lose()
+{
+    for (int i = 0; i < BOARD_MAX_WIDTH; i++)
+    {
+        if (this->m_matrix[0][i] == RenderSystem::PLACES_DEFINER::CATCHED_PLACE)
+            return true;// Lost
+    }
+    return false; // Keep going
+}

@@ -56,5 +56,12 @@ public:
 	void Move_Right();
 	void Rotate();
 
+	/// <summary>
+	/// Checking if there is any block stuck on the top line
+	/// if there is lose game
+	/// </summary>
+	/// <returns>True if lost</returns>
+	bool Check_If_lose();
+
 };
 

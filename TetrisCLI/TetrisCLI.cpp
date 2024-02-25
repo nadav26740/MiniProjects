@@ -22,11 +22,14 @@ void main_update(DEFAULT_TIME_TYPE_TICKER delta_time);
 void Render_Screen();
 Ticker main_ticker(std::chrono::milliseconds(START_TIME_PER_FRAME));
 
+bool GameRunning;
 
 int main()
 {
     char keyboard_input_buffer = NULL;
     uint8_t matrix[BOARD_MAX_HEIGHT][BOARD_MAX_WIDTH];
+ 
+    GameRunning = true;
     for (int i = 0; i < BOARD_MAX_HEIGHT; i++)
     {
         for (int j = 0; j < BOARD_MAX_WIDTH; j++)
@@ -39,7 +42,7 @@ int main()
     main_ticker.Start();
     
     // getting keyboard input
-    while (keyboard_input_buffer != ESCAPE_BUTTON)
+    while (keyboard_input_buffer != ESCAPE_BUTTON && GameRunning)
     {
         keyboard_input_buffer = _getch();
         if (keyboard_input_buffer <= 0)
@@ -65,6 +68,7 @@ int main()
         }
         Render_Screen();
     }
+
 }
 
 void main_update(DEFAULT_TIME_TYPE_TICKER delta_time)
@@ -73,6 +77,14 @@ void main_update(DEFAULT_TIME_TYPE_TICKER delta_time)
     {
         game_Board.update();
         Render_Screen();
+
+        if (game_Board.Check_If_lose())
+        {
+            main_ticker.async_stop();
+            GameRunning = false;
+            std::cout << "Game Over" << std::endl << "Score: " << game_Board.Get_score() << std::endl;
+        }
+
     }
     catch (std::exception &e)
     {

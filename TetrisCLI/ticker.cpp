@@ -25,6 +25,11 @@ void Ticker::Stop()
         m_clock->join();
 }
 
+void Ticker::async_stop()
+{
+    m_Running = false;
+}
+
 void Ticker::Start()
 {
     m_Running = true;
