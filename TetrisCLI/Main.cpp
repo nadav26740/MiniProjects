@@ -76,6 +76,7 @@ int main()
         Render_Screen();
         //std::cout << "Key Pressed: " << keyboard_input_buffer << std::endl;
     }
+    main_ticker.Stop();
 
 }
 
