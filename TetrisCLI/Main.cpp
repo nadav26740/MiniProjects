@@ -10,6 +10,7 @@
 #define ESCAPE_BUTTON 27
 #define LFET_ARROW 75
 #define UP_ARROW 72
+#define DOWN_ARROW 80
 #define RIGHT_ARROW 77
 
 #define START_TIME_PER_FRAME 600
@@ -26,6 +27,8 @@ bool GameRunning;
 
 int main()
 {
+
+    system("color a");
     char keyboard_input_buffer = NULL;
     uint8_t matrix[BOARD_MAX_HEIGHT][BOARD_MAX_WIDTH];
  
@@ -62,11 +65,16 @@ int main()
         case(UP_ARROW):
             game_Board.Rotate();
             break;
-        
+
+        case (DOWN_ARROW):
+            game_Board.SuperFall();
+            break;
+
         default:
             continue;
         }
         Render_Screen();
+        //std::cout << "Key Pressed: " << keyboard_input_buffer << std::endl;
     }
 
 }

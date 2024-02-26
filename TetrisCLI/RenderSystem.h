@@ -8,8 +8,8 @@
 #define EMPTY_PLACE			". ."
 #define UNKNOWN_SYMBOL		"###"
 
-#define BOARD_MAX_HEIGHT 16
-#define BOARD_MAX_WIDTH 8
+#define BOARD_MAX_HEIGHT 24
+#define BOARD_MAX_WIDTH 12
 
 #define WINDOW_HEIGHT
 #define WINDOW_WIDTH
@@ -19,7 +19,12 @@ namespace RenderSystem
 	enum PLACES_DEFINER
 	{
 		EMPTY,
-		CATCHED_PLACE
+		CATCHED_PLACE,
+		CATCHED_PLACE_YEL,
+		CATCHED_PLACE_RED,
+		CATCHED_PLACE_BLUE,
+		CATCHED_PLACE_GRN,
+		CATCHED_PLACE_PUR
 	};
 
 	/// <summary>

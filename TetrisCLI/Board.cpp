@@ -180,6 +180,20 @@ void Board::Rotate()
     }
 }
 
+void Board::SuperFall()
+{
+    uint8_t cords_tester[2] = {current_cords[0], current_cords[1]};
+    for (int i = current_cords[0] + 1; i <= BOARD_MAX_HEIGHT; i++)
+    {
+        cords_tester[0] = i;
+        if (!Next_Move_legal(cords_tester))
+        {
+            current_cords[0] = i - 1;
+            return;
+        }
+    }
+}
+
 bool Board::Check_If_lose()
 {
     for (int i = 0; i < BOARD_MAX_WIDTH; i++)

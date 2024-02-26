@@ -56,6 +56,7 @@ public:
 	void Move_Right();
 	void Rotate();
 
+	void SuperFall();
 	/// <summary>
 	/// Checking if there is any block stuck on the top line
 	/// if there is lose game

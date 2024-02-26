@@ -135,7 +135,7 @@
     <ClCompile Include="TetraL.cpp" />
     <ClCompile Include="TetraLine.cpp" />
     <ClCompile Include="TetraT.cpp" />
-    <ClCompile Include="TetrisCLI.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="ticker.cpp" />
   </ItemGroup>
   <ItemGroup>
