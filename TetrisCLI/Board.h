@@ -6,6 +6,7 @@
 #include "TetraBlock.h"
 #include "TetraL.h"
 #include "TetraT.h"
+#include "TetraZig.h"
 
 class Board
 {
