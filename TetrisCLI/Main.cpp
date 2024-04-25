@@ -3,6 +3,14 @@
 #include <iostream>
 #include <conio.h>
 #include <mutex>
+
+// for render system
+#define VERSION_2_RENDERSYSTEM 1
+#if defined(_WIN32) || defined(_WIN64)
+#include <Windows.h>
+#endif // _WIN32
+
+
 #include "RenderSystem.h"
 #include "Board.h"
 #include "ticker.hpp"
@@ -27,8 +35,28 @@ bool GameRunning;
 
 int main()
 {
+    // initilizing screen
+#if defined(VERSION_2_RENDERSYSTEM) && (defined(_WIN32) || defined(_WIN64))
+    //ShowCursor(FALSE);
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 
+    CONSOLE_CURSOR_INFO     cursorInfo;
+
+    GetConsoleCursorInfo(out, &cursorInfo);
+
+    cursorInfo.bVisible = FALSE; // set the cursor visibility
+
+    SetConsoleCursorInfo(out, &cursorInfo);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
+
+#else
     system("color a");
+
+
+#endif // #if defined(VERSION_2_RENDERSYSTEM) && (defined(_WIN32) || defined(_WIN64))
+
+
+
     char keyboard_input_buffer = NULL;
     uint8_t matrix[BOARD_MAX_HEIGHT][BOARD_MAX_WIDTH];
  
@@ -108,7 +136,26 @@ void main_update(DEFAULT_TIME_TYPE_TICKER delta_time)
 void Render_Screen()
 {
     Render_locker.lock();
-    system("cls");
+
+
+#ifdef  VERSION_2_RENDERSYSTEM
+    #if defined(_WIN32) || defined(_WIN64)
+        // cleaning screen
+        COORD Console_cords;
+        Console_cords.X = 0;
+        Console_cords.Y = 0;
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Console_cords);
+
+    #elif defined (__linux__)
+        std::cout << "\033[ " << 1 << ';' << 1 << "f" << std::endl;
+    #endif
+
+#else
+    system("cls"); // work only in windows will be fucked up in linux
+#endif //  VERSION_2_RENDERSYSTEM
+
+
+
     RenderSystem::Render_By_Metrix((uint8_t*)game_Board.GetBoard());
     std::cout << "Score: " << game_Board.Get_score() << std::endl;
 
