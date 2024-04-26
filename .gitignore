@@ -398,7 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 #AutoCompiler
-*/AutoCompiler/*
+*/.AutoCompiler/*
 build/*
 release/*
-AutoCompiler/*
+.AutoCompiler/*
